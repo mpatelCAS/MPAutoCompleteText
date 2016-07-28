@@ -1,0 +1,87 @@
+//
+//  APIDataSource.m
+//  AutoCompletion
+//
+
+
+#import "APIDataSource.h"
+#import "GetJSONOperation.h"
+#import "Constants.h"
+#import "NSString+URLEncoding.h"
+#import "APIRequestOperation.h"
+
+@interface RequestObject ()
+@property (nonatomic, strong) NSString* incompleteString;
+@property (nonatomic, strong) FetchCompletionBlock completionBlock;
+@end
+
+@implementation RequestObject
+@end
+
+@interface APIDataSource ()
+
+@property(strong,nonatomic) NSOperationQueue *fetchQueue;
+@property RequestObject *requestDataObject;
+@property APIRequestOperation *apiRequest;
+@end
+
+@implementation APIDataSource
+
+- (void)fetchSuggestionsForIncompleteString:(NSString*)incompleteString
+                        withCompletionBlock:(FetchCompletionBlock)completion
+{
+    if (_fetchQueue.operationCount > 0) {
+        [_fetchQueue cancelAllOperations];
+    }
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(timeoutRequestWithRequestedObject:) object:self.requestDataObject];
+    self.requestDataObject = [RequestObject new];
+    [self.requestDataObject setIncompleteString:[incompleteString urlEncodeUsingEncoding:NSUTF8StringEncoding]];
+    [self.requestDataObject setCompletionBlock:completion];
+    //Postpone the search request
+    [self performSelector:@selector(timeoutRequestWithRequestedObject:) withObject:self.requestDataObject afterDelay:0.3];
+}
+
+- (void)timeoutRequestWithRequestedObject:(RequestObject *)requestDataObject {
+    
+     if (_api_type == APICallTypeGET) {
+         [self timeoutRequestWithGetRequestedObject:requestDataObject];
+     }
+    
+     if (_api_type == APICallTypePOST) {
+        [self timeoutRequestWithPostRequestedObject:requestDataObject];
+     }
+}
+
+- (void)timeoutRequestWithGetRequestedObject:(RequestObject *)requestDataObject {
+    
+  // TODO : this url is optional
+  //  NSString *urlString = [NSString stringWithFormat:@"https://www.googleapis.com/customsearch/v1?key=%@&q=%@&cx=%@",apiKey,requestDataObject.incompleteString, engineID];
+  
+    NSURL *downloadURL = [NSURL URLWithString:_requestURL];
+    APIRequestOperation *operation = [[APIRequestOperation alloc] initWithDownloadURL:downloadURL
+                                                            withCompletionBlock:requestDataObject.completionBlock];
+    operation.req_type = requestTypeGET;
+    operation.requestParams = _requestParams;
+    operation.manager = _manager;
+    [_fetchQueue addOperation:operation];
+}
+
+- (void)timeoutRequestWithPostRequestedObject:(RequestObject *)requestDataObject {
+    
+    // TODO : this url is optional
+    //  NSString *urlString = [NSString stringWithFormat:@"https://www.googleapis.com/customsearch/v1?key=%@&q=%@&cx=%@",apiKey,requestDataObject.incompleteString, engineID];
+    
+    NSURL *downloadURL = [NSURL URLWithString:_requestURL];
+    APIRequestOperation *operation = [[APIRequestOperation alloc] initWithDownloadURL:downloadURL
+                                                                  withCompletionBlock:requestDataObject.completionBlock];
+    operation.req_type = requestTypePOST;
+    operation.requestParams = _requestParams;
+    operation.manager = _manager;
+    [_fetchQueue addOperation:operation];
+}
+
+
+@end
+
+
