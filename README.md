@@ -11,7 +11,7 @@ This repository required this thing to run this project
 
 ![Alt][screenshot1]
 
-[screenshot1]: https://github.com/mpatelCAS/MPAutoCompleteText/blob/master/demo.png
+[screenshot1]: https://github.com/mpatelCAS/MPAutoCompleteTextField/blob/master/Simulator%20Screen%20Shot%20Jul%2026%2C%202016%2C%203.50.08%20PM.png
 
 ```obj-c
 
