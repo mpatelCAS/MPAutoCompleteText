@@ -14,6 +14,31 @@ This repository required this thing to run this project
 
 [screenshot1]:https://github.com/mpatelCAS/MPAutoCompleteText/blob/master/demo.png
 
+## Installation
+
+MPAutoCompleteTextField is available through [CocoaPods](http://cocoapods.org) ,To install it, simply add the following line to your Podfile:
+
+```ruby
+pod 'MPAutoCompleteText'
+```
+
+## Usage
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+Then import the MPAutoCompleteTextField into your source files (or into your bridging header if you're using with Swift and not using frameworks with CocoaPods):
+
+```obj-c
+#import "Private.h"
+@import AutoCompletion;
+```
+
+If you are using Swift and frameworks, then you can just import the browser into your Swift source file:
+
+```swift
+import AutoCompletion;
+```
+
 ```obj-c
 
     #import "Private.h"  
