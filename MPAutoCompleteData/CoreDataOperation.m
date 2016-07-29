@@ -71,7 +71,7 @@
 {
     if ([keyPath isEqualToString:NSStringFromSelector(@selector(completedUnitCount))]) {
         NSNumber *newValue = [change objectForKey:@"new"];
-//        NSLog(@"completed:%@",newValue);
+        NSLog(@"completed:%@",newValue);
     }
     else if ([keyPath isEqualToString:NSStringFromSelector(@selector(totalUnitCount))]) {
         NSNumber *newValue = [change objectForKey:@"new"];

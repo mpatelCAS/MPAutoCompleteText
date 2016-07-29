@@ -6,8 +6,11 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/mpatelCAS/MPAutoCompleteText'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'mpatel' => 'mpatel@customapps.in' }
-  s.source           = { :git => 'https://github.com/mpatelCAS/MPAutoCompleteText.git', :tag => '0.1.0'}
-  s.platform         = :ios, '8.0'
-  s.source_files     = 'MPAutoCompleteData/*'
+  s.source           = { :git => 'https://github.com/mpatelCAS/MPAutoCompleteText.git', tag: "v#{s.version}" }
+  s.source_files     = 'MPAutoCompleteData/*.{h,m}' , 'MPAutoCompleteData/**/*.{h,m}', 'MPAutoCompleteData/**/**/*.{h,m}'
   s.dependency 'AFNetworking', '~> 3.0'
+
+  s.ios.frameworks = ["CoreData"]
+  s.ios.deployment_target    = '8.0'
+  s.ios.vendored_framework   = 'AutoCompletion.framework'
 end
