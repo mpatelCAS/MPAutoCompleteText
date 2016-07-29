@@ -58,7 +58,11 @@
   // TODO : this url is optional
   //  NSString *urlString = [NSString stringWithFormat:@"https://www.googleapis.com/customsearch/v1?key=%@&q=%@&cx=%@",apiKey,requestDataObject.incompleteString, engineID];
   
-    NSURL *downloadURL = [NSURL URLWithString:_requestURL];
+    NSMutableString *strURL = [[NSMutableString alloc] init];
+    [strURL appendString:_requestURL];
+    [strURL appendString:requestDataObject.incompleteString];
+    
+    NSURL *downloadURL = [NSURL URLWithString:strURL];
     APIRequestOperation *operation = [[APIRequestOperation alloc] initWithDownloadURL:downloadURL
                                                             withCompletionBlock:requestDataObject.completionBlock];
     operation.req_type = requestTypeGET;
@@ -72,7 +76,11 @@
     // TODO : this url is optional
     //  NSString *urlString = [NSString stringWithFormat:@"https://www.googleapis.com/customsearch/v1?key=%@&q=%@&cx=%@",apiKey,requestDataObject.incompleteString, engineID];
     
-    NSURL *downloadURL = [NSURL URLWithString:_requestURL];
+    NSMutableString *strURL = [[NSMutableString alloc] init];
+    [strURL appendString:_requestURL];
+    [strURL appendString:requestDataObject.incompleteString];
+    
+    NSURL *downloadURL = [NSURL URLWithString:strURL];
     APIRequestOperation *operation = [[APIRequestOperation alloc] initWithDownloadURL:downloadURL
                                                                   withCompletionBlock:requestDataObject.completionBlock];
     operation.req_type = requestTypePOST;
