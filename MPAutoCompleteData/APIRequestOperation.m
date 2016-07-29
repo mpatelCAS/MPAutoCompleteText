@@ -106,8 +106,6 @@
     withCompletionBlock:(FetchCompletionBlock)completion
      setCompletionBlock:(void (^)(void))complete
                        :(NSURL *)url {
-   
-    NSLog(@"testing");
     
     id dataItem = [responseObject objectForKey:@"items"];
     NSMutableArray *responseItems = [NSMutableArray new];
