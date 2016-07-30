@@ -6,6 +6,8 @@ Repository for Autocomplete Textfield from API, Coredata as well Json response ,
 
 Clone this repository and Add this code to your class
 This repository required this thing to run this project 
+
+* Note : I would suggest to use this librery from Pod 
   
  -  **AutoCompleteFramework**
  -  **AFNetworking 3.0**
@@ -71,7 +73,7 @@ import AutoCompletion;
          _jsonTextField.suggestionsResultDelegate = self;
     
           APIDataSource *apiDataSource = [[APIDataSource alloc] init];
-          apiDataSource.requestURL = @"YOUR CUSTOM URL/";                     // Add your Custom url for get
+          apiDataSource.requestURL = @"YOUR CUSTOM URL/";                      // Add your Custom url for get
           apiDataSource.api_type = APICallTypeGET;                             // For post use APICallTypePOST
           apiDataSource.requestParams = [[NSMutableDictionary alloc] init];    // Add your request parameters 
           apiDataSource.manager = manager;                                     // Add your necessory credentials for SessionManager       for this use AFHTTPSessionManager
