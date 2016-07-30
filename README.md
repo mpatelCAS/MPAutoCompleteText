@@ -98,3 +98,14 @@ import AutoCompletion;
         Items *item = selectedItem;
         [placeholderTextField setText:item.title];
   }
+
+
+## Author
+
+Mayank Patel, mpatel@customapps.in
+
+
+## License
+
+MPAutoCompleteText is available under the MIT license. See the LICENSE file for more info.
+
