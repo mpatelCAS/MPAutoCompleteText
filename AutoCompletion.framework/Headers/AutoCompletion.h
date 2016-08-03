@@ -16,7 +16,12 @@ FOUNDATION_EXPORT const unsigned char AutoCompletionVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <AutoCompletion/PublicHeader.h>
 
-#import <AutoCompletion/AutoCompletionTextFieldDataSource.h>
-#import <AutoCompletion/AutoCompletionAnimator.h>
-#import <AutoCompletion/AutoCompletionTextFieldDelegate.h>
-#import <AutoCompletion/AutoCompletionTextField.h>
+//#import <AutoCompletion/AutoCompletionTextFieldDataSource.h>
+//#import <AutoCompletion/AutoCompletionAnimator.h>
+//#import <AutoCompletion/AutoCompletionTextFieldDelegate.h>
+//#import <AutoCompletion/AutoCompletionTextField.h>
+
+#import "AutoCompletionTextFieldDataSource.h"
+#import "AutoCompletionAnimator.h"
+#import "AutoCompletionTextFieldDelegate.h"
+#import "AutoCompletionTextField.h"
