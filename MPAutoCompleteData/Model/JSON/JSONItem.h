@@ -10,6 +10,8 @@
 
 @property (nonatomic, retain) NSString * title;
 
+@property (nonatomic, retain) NSString * value;
+
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 
 @end

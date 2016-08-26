@@ -17,7 +17,7 @@
         RequestOperation *downloadOperation = [[RequestOperation alloc] initWithUrl:url completion:^(NSURL *url, NSURLResponse *response, NSData *data, NSError *error) {
             NSArray *items = [JSONManager getItemsFromApiResponseDataObject:data];
             if (completion != nil) {
-                completion(items,@"title");
+                completion(items,@"title",@"");
             }
         }];
 

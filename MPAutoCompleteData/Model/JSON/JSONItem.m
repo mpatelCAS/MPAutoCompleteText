@@ -13,6 +13,7 @@
     
     if (self = [super init]) {
         self.title = [dictionary valueForKey:@"title"];
+        self.value = [dictionary valueForKey:@"value"];
     }
     
     return self;

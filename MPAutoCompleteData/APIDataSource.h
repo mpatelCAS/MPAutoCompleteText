@@ -24,6 +24,10 @@ typedef NS_ENUM(NSInteger, APICallType) {
 
 @property (nonatomic,retain) NSString *requestURL;
 
+@property (nonatomic,retain) NSString *reqKey;
+
+@property (nonatomic,retain) NSString *rvalue;
+
 @property (nonatomic,retain) NSMutableDictionary *requestParams;
 
 @end

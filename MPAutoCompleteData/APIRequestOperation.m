@@ -35,7 +35,7 @@
 - (instancetype)initWithDownloadURL:(NSURL*)url withCompletionBlock:(FetchCompletionBlock)completion
 {
     if (self = [super init]) {
-      
+        
         self.manager = [AFHTTPSessionManager manager];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0),^{
@@ -43,7 +43,7 @@
             [self performRequestOperation:url
                       withCompletionBlock:completion
                        setCompletionBlock:^{
-            }];
+                       }];
         });
         
     }
@@ -70,24 +70,24 @@
     
     if (_req_type == requestTypeGET) {
         
-        [self.manager GET:[url absoluteString] parameters:_requestParams progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self.manager GET:[url absoluteString] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
             [self manageResponse:responseObject
              withCompletionBlock:completion
               setCompletionBlock:complete
                                 :url];
-       
+            
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
             // Error Message
         }];
-
+        
     }
     
     if (_req_type == requestTypePOST) {
         
         [self.manager POST:[url absoluteString] parameters:_requestParams progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-           
+            
             [self manageResponse:responseObject
              withCompletionBlock:completion
               setCompletionBlock:complete
@@ -96,7 +96,7 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
             // Error Message
-        
+            
         }];
         
     }
@@ -112,16 +112,17 @@
     if ([dataItem isKindOfClass:[NSArray class]]) {
         NSArray *items = dataItem;
         for (id item in items) {
-            if ([item isKindOfClass:[NSDictionary class]] && [[item objectForKey:@"kind"] isEqualToString:@"customsearch#result"]) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
                 JSONItem *jsonItem = [JSONItem new];
-                [jsonItem setTitle:[item objectForKey:@"title"]];
+                [jsonItem setTitle:[item objectForKey:_reqKey]];
+                [jsonItem setValue:[item objectForKey:_reqValue]];
                 [responseItems addObject:jsonItem];
             }
         }
     }
     
     if (completion != nil) {
-        completion(responseItems,@"title");
+        completion(responseItems,@"title",@"value");
     }
     
     _isReqInProgress = false;
@@ -137,7 +138,7 @@
             
             [self performRequestOperation:url withCompletionBlock:completion setCompletionBlock:_customBlock];
         });
-
+        
         return;
     }
     

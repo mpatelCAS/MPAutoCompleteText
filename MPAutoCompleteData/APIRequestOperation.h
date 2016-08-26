@@ -20,7 +20,11 @@ typedef NS_ENUM(NSInteger, requestType) {
 
 @property (nonatomic,retain) AFHTTPSessionManager *manager;
 
+@property (nonatomic,retain) NSString *reqKey;
+
 @property requestType req_type;
+
+@property (nonatomic,retain) NSString *reqValue;
 
 @property (nonatomic,retain) NSMutableDictionary *requestParams;
 
