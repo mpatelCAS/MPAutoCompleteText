@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MPAutoCompleteText'
-  s.version          = '1.1'
+  s.version          = '1.2'
   s.summary          = 'Repository for Autocomplete Textfield from API, Coredata as well Json response you can manage it'
   s.description      = 'A framework which provides text field suggestions as a dropdown list. It is available with iOS 8 and later, Objective-C or Swift.'
   s.homepage         = 'https://github.com/mpatelCAS/MPAutoCompleteText'
