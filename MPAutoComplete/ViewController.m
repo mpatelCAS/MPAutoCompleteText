@@ -35,12 +35,12 @@
     _jsonTextField.suggestionsResultDelegate = self;
     
     APIDataSource *apiDataSource = [[APIDataSource alloc] init];
-  //  apiDataSource.requestURL = @"YOUR CUSTOM URL";                       // Add your Custom url
+    //  apiDataSource.requestURL = @"YOUR CUSTOM URL";                      // Add your Custom url
     apiDataSource.reqKey = @"name";         // your key
     apiDataSource.rvalue = @"product_id";   // Your responce value
-    apiDataSource.api_type = APICallTypeGET;                             // For post use APICallTypePOST
-    //apiDataSource.requestParams = [[NSMutableDictionary alloc] init];    // Add your request parameters
-    //apiDataSource.manager = manager;                                     // Add your necessory credentials for SessionManager for this use AFHTTPSessionManager
+    apiDataSource.api_type = APICallTypeGET;                                // For post use APICallTypePOST
+    //apiDataSource.requestParams = [[NSMutableDictionary alloc] init];     // Add your request parameters
+    //apiDataSource.manager = manager;                                      // Add your necessory credentials for SessionManager for this use AFHTTPSessionManager
     _apiTextField.suggestionsResultDataSource = apiDataSource;
     _apiTextField.suggestionsResultDelegate = self;
 }
