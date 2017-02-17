@@ -3,9 +3,9 @@
 //  AutoCompletion
 //
 
-@import AutoCompletion;
 #import <Foundation/Foundation.h>
 #import "AFHTTPSessionManager.h"
+#import "Private.h"
 
 @interface RequestObject : NSObject
 
