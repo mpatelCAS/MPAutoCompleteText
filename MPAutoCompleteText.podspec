@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author           = { 'mpatel' => 'mpatel@customapps.in' }
   s.source           = { :git => 'https://github.com/mpatelCAS/MPAutoCompleteText.git',:tag => s.version.to_s }
   s.source_files     = "AutoCompletion.framework/Headers/*.h",'MPAutoCompleteData/*.{h,m}' , 'MPAutoCompleteData/**/*.{h,m}', 'MPAutoCompleteData/**/**/*.{h,m}'
-  s.dependency 'AFNetworking', '~> 3.0'
+  s.dependency 'AFNetworking', '~> 4.0'
 
   s.ios.frameworks = ["CoreData"]
   s.ios.deployment_target    = '8.0'
